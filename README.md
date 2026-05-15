@@ -1,16 +1,84 @@
-# React + Vite
+# Pokédex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación React que consume la PokéAPI para mostrar un listado de pokémon con paginación y página de detalle individual.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Listado de pokémon consumiendo la PokéAPI
+- Paginación de 24 pokémon por página
+- Estados de carga, error y vacío gestionados
+- Botón de reintento cuando falla la conexión
+- Página de detalle con nombre, id, sprite, tipos, altura, peso y estadísticas base
+- Error controlado en el detalle sin que la app se rompa
+- Al volver del detalle se mantiene la página donde estabas
 
-## React Compiler
+## Tecnologías
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- JavaScript
+- PokéAPI (https://pokeapi.co)
 
-## Expanding the ESLint configuration
+## Instalación y ejecución
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clonar el repositorio:
+```
+git clone https://github.com/marialedesmaNTT/ejercicio1.git
+```
+2. Entrar en la carpeta del proyecto:
+```
+cd ejercicio1
+```
+3. Instalar dependencias:
+```
+npm install
+```
+4. Ejecutar el proyecto:
+```
+npm run dev
+```
+5. Abrir en el navegador:
+```
+http://localhost:5173
+```
+
+No hace falta ningún archivo `.env` ni configuración adicional, la API es pública.
+
+## Estructura del proyecto
+
+```
+src/
+  components/
+    TarjetaPokemon.jsx
+  pages/
+    DetallePokemon.jsx
+    ListaPokemon.jsx
+  App.jsx
+  constants.js
+  index.css
+  main.jsx
+```
+
+## Decisiones técnicas
+
+- Se usó Vite en vez de create-react-app porque es más rápido y es lo que recomienda la documentación oficial de React actualmente.
+- La navegación entre lista y detalle se resolvió con un estado en `App.jsx` en vez de usar React Router, ya que solo hay dos vistas y no merecía la pena añadir una dependencia extra.
+- La página actual también se guarda en `App.jsx` para que al volver del detalle no se pierda la posición.
+- Los datos de cada pokémon se cargan con `Promise.all` porque la API de listado solo devuelve nombre y URL, no los detalles completos.
+- Las constantes como la URL base y los colores de tipos están separadas en `constants.js` para no repetirlas por todo el código.
+
+## Mejoras futuras ⁉️
+
+- Añadir buscador por nombre
+- Filtrar por tipo de pokémon
+- Animación de transición entre lista y detalle
+- Guardar favoritos en localStorage
+- Tests automáticos
+
+## Autora
+
+María Ledesma Zotano - 2026
+
+### Anotaciones
+
+Faltan por subir los vídeos !
