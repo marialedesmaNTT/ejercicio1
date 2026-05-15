@@ -2,11 +2,10 @@ import { useState, useEffect } from "react"
 import { BASE_URL, POKEMON_POR_PAGINA } from "../constants"
 import TarjetaPokemon from "../components/TarjetaPokemon"
 
-function ListaPokemon() {
+function ListaPokemon({ onSeleccionar, paginaActual, setPaginaActual }) {
   const [pokemonList, setPokemonList] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
-  const [paginaActual, setPaginaActual] = useState(0)
   const [totalPokemon, setTotalPokemon] = useState(0)
 
   useEffect(() => {
@@ -95,7 +94,7 @@ function ListaPokemon() {
           marginTop: 24
         }}>
           {pokemonList.map((p) => (
-            <TarjetaPokemon key={p.id} pokemon={p} onClick={() => console.log("click", p.id)} />
+            <TarjetaPokemon key={p.id} pokemon={p} onClick={() => onSeleccionar(p.id)} />
           ))}
         </div>
       )}

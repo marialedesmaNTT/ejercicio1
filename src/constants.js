@@ -2,7 +2,7 @@
 export const BASE_URL = "https://pokeapi.co/api/v2"
 
 // cuántos pokémon mostramos por página
-export const POKEMON_POR_PAGINA = 20
+export const POKEMON_POR_PAGINA = 24
 
 // colores para los tipos de pokémon
 export const COLOR_TIPOS = {
